@@ -11,11 +11,12 @@ function handleResponse(initialWords)  {
 }
 /* POST checkspell listing. */
 router.post('/', function(req, res) {
-  var options = { method: 'POST',
-  url: 'http://vaani.neechalkaran.com/checkspell',
-  headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-  body: 'action=vaani&tamilwords='+req.body.tamilwords 
-};
+  var options = { 
+    method: 'POST',
+    url: 'http://vaani.neechalkaran.com/checkspell',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+    body: ('action=vaani&tamilwords='+req.body.tamilwords)
+  };
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
     res.send(handleResponse(body));
