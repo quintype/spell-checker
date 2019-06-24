@@ -7,7 +7,7 @@ var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var checkspellRouter = require('./routes/checkspell');
+var checkspellRouter = require('./routes/checkspell').router;
 
 var app = express();
 

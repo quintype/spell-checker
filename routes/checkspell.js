@@ -33,4 +33,4 @@ router.get('/', function(req, res) {
   res.send('Unsupported operation');
 });
 
-module.exports = router;
+module.exports = {router, handleResponse};
