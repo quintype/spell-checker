@@ -1,26 +1,29 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var request = require('request');
+var request = require("request");
 
-const handleResponse = (initialWords) => {
+const handleResponse = initialWords => {
   var data = JSON.parse(initialWords);
-  return data.map(word => {
-    if (word['Suggestions'] !== "") return {
-      'word': word['Userword'],
-      'suggestions': word['Suggestions']
-    };
-  }).filter((element) => element);
-}
+  return data
+    .map(word => {
+      if (word["Suggestions"] !== "")
+        return {
+          word: word["Userword"],
+          suggestions: word["Suggestions"]
+        };
+    })
+    .filter(element => element);
+};
 
 /* POST checkspell listing. */
-router.post('/', function(req, res) {
+router.post("/", function(req, res) {
   var options = {
-    method: 'POST',
-    url: 'http://vaani.neechalkaran.com/checkspell',
+    method: "POST",
+    url: "http://vaani.neechalkaran.com/checkspell",
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     },
-    body: ('action=vaani&tamilwords=' + req.body.tamilwords)
+    body: "action=vaani&tamilwords=" + req.body.tamilwords
   };
   request(options, function(error, response, body) {
     if (error) throw new Error(error);
@@ -29,8 +32,8 @@ router.post('/', function(req, res) {
 });
 
 /* GET checkspell listing */
-router.get('/', function(req, res) {
-  res.send('Unsupported operation');
+router.get("/", function(req, res) {
+  res.send("Unsupported operation");
 });
 
-module.exports = {router, handleResponse};
+module.exports = { router, handleResponse };
