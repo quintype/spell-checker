@@ -15,6 +15,7 @@ ENV NODE_ENV production
 
 COPY . /app/
 RUN rm -rf node-modules && \
+    npm run compile && \
     npm install --no-optional --production && \
     rm -rf /app/.npm /app/.git
 
