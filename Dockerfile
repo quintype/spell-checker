@@ -14,8 +14,7 @@ ENV NODE_ENV production
 # Everything above should be cached by docker. The below should run on every build
 
 COPY . /app/
-RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
-    rm -rf node-modules && \
+RUN rm -rf node-modules && \
     npm install --no-optional --production && \
     rm -rf /app/.npm /app/.git
 
