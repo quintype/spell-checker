@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "build": "node ./bin/www",
+    "start": "node start.js",
     "test": "jest"
   },
   "dependencies": {
+    "cluster": "^0.7.7",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
