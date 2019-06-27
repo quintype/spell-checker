@@ -11,7 +11,7 @@ const OUTPUT_DIRECTORY = __dirname + `/public/${PUBLIC_PATH}`;
 const BABEL_PRESET = {
   loader: 'babel-loader',
   options: {
-    presets: []
+    presets: ["@babel/preset-env"]
   }
 };
 
@@ -55,7 +55,7 @@ module.exports = {
       new webpack.EnvironmentPlugin({ NODE_ENV: 'development'}),
       new ManifestPlugin({ fileName: '../../../asset-manifest.json', publicPath: PUBLIC_PATH, writeToFileEmit: true })
     ].concat(config.compressJSPlugins),
-    "target": "node",
+    target: "node",
     devServer: {
       headers: {"Access-Control-Allow-Origin": "*"}
     }

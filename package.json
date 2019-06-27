@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.4.5",
     "cluster": "^0.7.7",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
