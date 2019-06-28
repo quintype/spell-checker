@@ -5,7 +5,7 @@ const handleResponse = require("./checkspell").handleResponse;
 describe("Spellcheck API", () => {
   test("It should response the POST method", async () => {
     const response = await request(app)
-      .post("/api/tamil/spell-check")
+      .post("/api/spell-check/tamil")
       .send(
         "action=vaani&tamilwords=அவரிடமிருந்து|உற்சாகமாகப்|பதில்கள்|வருகின்றன|அரஙகேறி|முடிந்துள்ள|நிலையில்"
       )

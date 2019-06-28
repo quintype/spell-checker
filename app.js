@@ -6,6 +6,7 @@ var logger = require("morgan");
 var cors = require("cors");
 
 var checkspellRouter = require("./routes/checkspell").router;
+var pingRouter = require("./routes/ping");
 
 var app = express();
 
@@ -15,7 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/checkspell", checkspellRouter);
-app.use("/api/tamil/spell-check", checkspellRouter);
+app.use("/api/spell-check/tamil", checkspellRouter);
+app.use("/ping", pingRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
