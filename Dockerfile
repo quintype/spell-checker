@@ -3,8 +3,7 @@ FROM node:10.16.0-alpine AS build
 
 RUN apk update && \
     apk add git && \
-    mkdir -p /app/public/spellchecker && \
-    mkdir /app
+    mkdir -p /app/public/spellchecker
 
 WORKDIR /app
 
