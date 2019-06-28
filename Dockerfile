@@ -2,9 +2,10 @@
 FROM node:10.16.0-alpine AS build
 
 RUN apk update && \
-    apk add git
+    apk add git && \
+    mkdir -p /app/public/spellchecker && \
+    mkdir /app
 
-RUN mkdir /app
 WORKDIR /app
 
 COPY package.json package-lock.json /app/
