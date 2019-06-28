@@ -31,6 +31,6 @@ ENV NODE_ENV production
 WORKDIR /app
 
 USER app
-CMD ["node", "start.js"]
 COPY --from=build --chown=app:app /app /app
+CMD ["node", "start.js"]
 
