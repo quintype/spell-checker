@@ -5,7 +5,7 @@ const path = require('path');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const PUBLIC_PATH='/spellchecker/assets/';
+const PUBLIC_PATH='/quintype-spellchecker/assets/';
 const OUTPUT_DIRECTORY = __dirname + `/public/${PUBLIC_PATH}`;
 
 const BABEL_PRESET = {
