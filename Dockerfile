@@ -29,8 +29,8 @@ RUN apk update && \
 
 ENV NODE_ENV production
 WORKDIR /app
-COPY --from=build --chown=app:app /app /app
 
 USER app
 CMD ["node", "start.js"]
+COPY --from=build --chown=app:app /app /app
 
