@@ -17,7 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/checkspell", checkspellRouter);
 app.use("/api/spell-check/tamil", checkspellRouter);
-app.use("/ping", pingRouter)
+app.use("/ping", pingRouter);
+app.use("/metrics", pingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
