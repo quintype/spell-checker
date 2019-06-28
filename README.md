@@ -5,12 +5,12 @@ An API to communicate with several spell checker services
 Integration with Vaani API (http://vaani.neechalkaran.com/)
 ```
 curl --request POST \
-  --url http://localhost:3000/api/tamil/spell-check \
+  --url http://localhost:3000/api/spell-check/tamil \
   --data 'action=vaani&tamilwords=அவரிடமிருந்து|உற்சாகமாகப்|பதில்கள்|வருகின்றன|அரஙகேறி|முடிந்துள்ள|நிலையில்'
 ```
 OR
 ```
-fetch('http://localhost:3000/api/tamil/spell-check', {
+fetch('http://localhost:3000/api/spell-check/tamil', {
     method: 'post',
     headers: {
       "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
