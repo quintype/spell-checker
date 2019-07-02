@@ -23,7 +23,7 @@ router.post("/", function(req, res) {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     },
-    body: "action=vaani&tamilwords=" + req.body.tamilwords
+    body: "action=vaani&tamilwords=" + req.body.words
   };
   request(options, function(error, response, body) {
     if (error) throw new Error(error);
