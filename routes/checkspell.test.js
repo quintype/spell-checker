@@ -7,7 +7,7 @@ describe("Spellcheck API", () => {
     const response = await request(app)
       .post("/api/spell-check/tamil")
       .send(
-        "action=vaani&tamilwords=அவரிடமிருந்து|உற்சாகமாகப்|பதில்கள்|வருகின்றன|அரஙகேறி|முடிந்துள்ள|நிலையில்"
+        "words=அவரிடமிருந்து|உற்சாகமாகப்|பதில்கள்|வருகின்றன|அரஙகேறி|முடிந்துள்ள|நிலையில்"
       )
       .expect(200);
     expect(response.body).toEqual([
