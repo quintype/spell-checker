@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var request = require("request");
+var config = require("../config.js");
 
 const handleResponse = initialWords => {
   var data = JSON.parse(initialWords);
@@ -17,13 +18,19 @@ const handleResponse = initialWords => {
 
 /* POST checkspell listing. */
 router.post("/", function(req, res) {
+  let url = config.default_tamil_spellchecker
+  let body_config = config.default_tamil_spellchecker_body
+  if(req.body.service === "vikatan") {
+    url = config.vikatan_spellchecker
+    body_config = config.vikatan_spellchecker_body
+  }
   var options = {
     method: "POST",
-    url: "http://vaani.neechalkaran.com/checkspell",
+    url,          
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     },
-    body: "action=vaani&tamilwords=" + req.body.words
+    body: body_config + req.body.words 
   };
   request(options, function(error, response, body) {
     if (error) throw new Error(error);
