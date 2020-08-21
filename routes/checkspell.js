@@ -22,7 +22,7 @@ router.post("/", function(req, res) {
   let body_config = config.default_tamil_spellchecker_body
   if(req.body.service === "vikatan") {
     url = config.vikatan_spellchecker
-    body_config = config.vikatan_spellchecker_body
+    bodyConfig = config.vikatan_spellchecker_body
   }
   var options = {
     method: "POST",
@@ -30,7 +30,7 @@ router.post("/", function(req, res) {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     },
-    body: body_config + req.body.words 
+    body: bodyConfig + req.body.words 
   };
   request(options, function(error, response, body) {
     if (error) throw new Error(error);
