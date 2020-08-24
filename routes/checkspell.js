@@ -19,7 +19,7 @@ const handleResponse = initialWords => {
 /* POST checkspell listing. */
 router.post("/", function(req, res) {
   let url = config.default_tamil_spellchecker
-  let body_config = config.default_tamil_spellchecker_body
+  let bodyConfig  = config.default_tamil_spellchecker_body
   if(req.body.service === "vikatan") {
     url = config.vikatan_spellchecker
     bodyConfig = config.vikatan_spellchecker_body
