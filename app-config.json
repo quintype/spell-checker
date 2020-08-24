@@ -1,0 +1,5 @@
+{ "default_tamil_spellchecker" : "http://vaani.neechalkaran.com/checkspell",
+"default_tamil_spellchecker_body":"action=vaani&tamilwords=",
+"vikatan_spellchecker":"http://spellcheck.vikatan.com/spellcheck",
+"vikatan_spellchecker_body":"action=vaani&tamilwords="
+}
