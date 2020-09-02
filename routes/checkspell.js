@@ -1,46 +1,58 @@
 var express = require("express");
 var router = express.Router();
 var request = require("request");
-var config = require("../config.js");
+var tamilController =  require("../controller/tamil")
+var getVernacularWords = require("../utils")
 
 const handleResponse = initialWords => {
   var data = JSON.parse(initialWords);
-  return data
-    .map(word => {
+  return data.map(word => {
+    if(word["Suggestions"] === "wrong"){
+      return "unsupported"
+    }
+    else {
       if (word["Suggestions"] !== "")
         return {
           word: word["Userword"],
           suggestions: word["Suggestions"]
         };
-    })
-    .filter(element => element);
+    }
+  }).filter(element => element);
 };
 
 /* POST checkspell listing. */
 router.post("/", function(req, res) {
-  let url = config.default_tamil_spellchecker
-  let bodyConfig  = config.default_tamil_spellchecker_body
-  if(req.body.service === "vikatan") {
-    url = config.vikatan_spellchecker
-    bodyConfig = config.vikatan_spellchecker_body
+  if(!req.body.language) {
+    res.send(["unsupported"])
   }
-  var options = {
-    method: "POST",
-    url,          
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-    },
-    body: bodyConfig + req.body.words 
-  };
-  request(options, function(error, response, body) {
-    if (error) throw new Error(error);
-    res.send(handleResponse(body));
-  });
+  if(req.body.language === "tamil"){
+  
+   var wordsToSpellCheck = getVernacularWords(req.body.words)
+   console.log("wordsToSpellCheck")
+   if(!wordsToSpellCheck) {
+     //in future handle support for english language spell check
+     res.send(["unsupported"])
+   }
+   else {
+     var {url, bodyConfig, headers} = tamilController(req.body)
+     var options = {
+      method: "POST",
+      url,          
+      headers,
+      body: bodyConfig + wordsToSpellCheck 
+    };
+    request(options, function(error, response, body) {
+      if (error) throw new Error(error);
+      res.send(handleResponse(body));
+    });
+   }
+  }
 });
 
 /* GET checkspell listing */
 router.get("/", function(req, res) {
   res.send("Unsupported operation");
 });
+
 
 module.exports = { router, handleResponse };
