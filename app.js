@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/checkspell", checkspellRouter);
-app.use("/api/spell-check/tamil", checkspellRouter);
+app.use("/api/spell-check", checkspellRouter);
 app.use("/ping", pingRouter);
 app.use("/metrics", pingRouter);
 
