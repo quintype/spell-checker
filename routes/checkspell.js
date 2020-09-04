@@ -1,8 +1,10 @@
 var express = require("express");
 var router = express.Router();
 var request = require("request");
+
 var tamilController =  require("../controller/tamil")
 var getVernacularWords = require("../utils")
+var config = require("../config.js");
 
 const handleResponse = initialWords => {
   var data = JSON.parse(initialWords);
